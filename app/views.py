@@ -23,7 +23,7 @@ def index():
     database_df = pd.read_csv(instance_path / "website_database.csv").reset_index()
 
     # Retrieve selected column to color by on the map. If no selection, default to "extracted_value".
-    colour_by = flask.request.args.get("colour_by", default="extracted_value")
+    colour_by = flask.request.args.get("colour_by", default="measured_gwl")
     type_shown = flask.request.args.get("type_shown", default="cpt_and_bh")
 
     if type_shown == "only_cpt":
