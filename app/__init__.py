@@ -8,7 +8,12 @@ def create_app(test_config: Any = None):
     """Build a flask app for serving."""
     # create and configure the app
     #app = Flask(__name__, instance_relative_config=True)
-    app = Flask(__name__, static_url_path="/nzgd_ground_water_levels")
+    # app = Flask(__name__, static_url_path="/nzgd_ground_water_levels/")
+
+    app = Flask(__name__,
+                static_url_path='/nzgd_ground_water_levels',  # URL prefix for static files
+                static_folder='static')  # folder containing static files
+
     app_path = Path(app.instance_path)
     print("app path:")
     print(app_path)
