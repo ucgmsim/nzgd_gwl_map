@@ -20,7 +20,6 @@
 <!-- Form to allow user input for filtering data -->
 <form id="query-form" method="GET" action="{{url_for('views.index')}}">
 
-
     <!-- Dropdown to select an investigation type to show on the map -->
     <label for="type_shown">Select an investigation type to show</label>
     <select id="query-type-shown" name="type_shown">
@@ -28,8 +27,6 @@
         <option value="{{column}}" {% if column==type_shown %}selected{% endif %}> {{label}}</option>
         {% endfor %}
     </select>
-
-
 
     <!-- Dropdown to select a parameter to colour points by on the map -->
     <label for="colour_by">Select a parameter to colour by</label>
@@ -39,10 +36,27 @@
         {% endfor %}
     </select>
 
-
     <!-- Submit button to trigger a search -->
-    <button id="query-button">Update selection</button>
+    <button id="query-button" type="button" onclick="submitForm()">Update selection</button>
 </form>
+
+<script>
+function submitForm() {
+    const form = document.getElementById('query-form');
+    const formData = new FormData(form);
+    const params = new URLSearchParams(formData);
+
+    fetch(form.action + '?' + params.toString(), {
+        method: 'GET',
+    })
+    .then(response => response.text())
+    .then(html => {
+        document.querySelector('section[role="figure"]').innerHTML = html;
+    })
+    .catch(error => console.error('Error:', error));
+}
+</script>
+
 <h5> {{ marker_description_text }} </h5>
 <!-- Section to render the Plotly map -->
 <section role="figure">
