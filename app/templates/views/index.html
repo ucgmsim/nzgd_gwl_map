@@ -40,22 +40,22 @@
     <button id="query-button" type="button" onclick="submitForm()">Update selection</button>
 </form>
 
-<script>
-function submitForm() {
-    const form = document.getElementById('query-form');
-    const formData = new FormData(form);
-    const params = new URLSearchParams(formData);
-
-    fetch(form.action + '?' + params.toString(), {
-        method: 'GET',
-    })
-    .then(response => response.text())
-    .then(html => {
-        document.querySelector('section[role="figure"]').innerHTML = html;
-    })
-    .catch(error => console.error('Error:', error));
-}
-</script>
+{#<script>#}
+{#function submitForm() {#}
+{#    const form = document.getElementById('query-form');#}
+{#    const formData = new FormData(form);#}
+{#    const params = new URLSearchParams(formData);#}
+{##}
+{#    fetch(form.action + '?' + params.toString(), {#}
+{#        method: 'GET',#}
+{#    })#}
+{#    .then(response => response.text())#}
+{#    .then(html => {#}
+{#        document.querySelector('section[role="figure"]').innerHTML = html;#}
+{#    })#}
+{#    .catch(error => console.error('Error:', error));#}
+{#}#}
+{#</script>#}
 
 <h5> {{ marker_description_text }} </h5>
 <!-- Section to render the Plotly map -->
