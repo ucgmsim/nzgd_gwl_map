@@ -14,7 +14,7 @@ def create_app(test_config: Any = None):
     #             static_url_path='/nzgd_ground_water_levels',  # URL prefix for static files
     #             static_folder='static')  # folder containing static files
 
-    #app_path = Path(app.instance_path)
+    app_path = Path(app.instance_path)
     static_path = Path(app.static_folder)
     print("static_path:")
     print(static_path)
