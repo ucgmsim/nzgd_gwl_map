@@ -10,6 +10,8 @@ def create_app(test_config: Any = None):
     #app = Flask(__name__, instance_relative_config=True)
     app = Flask(__name__, static_url_path="/nzgd_ground_water_levels")
     app_path = Path(app.instance_path)
+    print("app path:")
+    print(app_path)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
