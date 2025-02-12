@@ -18,7 +18,7 @@
 </section>
 
 <!-- Form to allow user input for filtering data -->
-<form id="query-form" method="GET" action="{{url_for('views.index')}}">
+<form id="query-form" method="GET" action="{{ url_for('views.index', _external=True).replace('http://', 'https://quakecoresoft.canterbury.ac.nz/nzgd_gwl_map') }}">
 
 
     <!-- Dropdown to select an investigation type to show on the map -->
