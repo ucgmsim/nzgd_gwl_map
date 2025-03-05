@@ -1,0 +1,18 @@
+# nzgd_gwl_map (New Zealand Geotechnical Database ground water level map)
+# Proxy location for dynamic content
+location /nzgd_gwl_map/ {
+    proxy_pass http://localhost:5001/;
+    proxy_read_timeout 600;
+}
+
+# For handing the static files with Flask.
+# gzip_static on; will automatically preferentially take .gz versions
+# of the files specified in the html (without .gz) if .gz versions are
+# available. This also automatically handles the
+# Content-Encoding and Content-Type headers which solved the issue of
+# the browser not uncompressing the .gz files when they were given as .gz
+# files in the html.
+location /nzgd_gwl_map/static/ {
+    alias /home/qcadmin/nzgd_gwl_map/app/static/;
+    gzip_static on;
+}
